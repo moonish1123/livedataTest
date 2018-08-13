@@ -1,6 +1,7 @@
 package com.example.bricekang.livedatatest
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,8 +24,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initUI() {
-        findViewById<Button>(R.id.button).setOnClickListener {
+        button.setOnClickListener {
             model.mCurrentName.value = "changed"
+            with(it) {
+                visibility = View.GONE
+                isEnabled = false
+            }
         }
     }
 
@@ -32,6 +37,13 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
 
         view.deinit()
+    }
+
+    fun test() {
+        var a: String? = null
+        var b: String? = null
+
+        a ?: ""
     }
 }
 
