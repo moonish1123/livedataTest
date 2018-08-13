@@ -1,11 +1,13 @@
 package com.example.bricekang.livedatatest
 
 import android.app.Application
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.toColor
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var model: NameViewModel
+    private lateinit var viewModel: NameViewModel
     private lateinit var view: NameView
     private val viewFactory: ViewModelProvider.Factory = object: ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -29,18 +31,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        model = ViewModelProvider(this, viewFactory).get(NameViewModel::class.java)
-        view = NameView(this, model)
+        viewModel = ViewModelProvider(this, viewFactory).get(NameViewModel::class.java)
+        view = NameView(this, viewModel)
 
         initUI()
     }
 
     fun initUI() {
         button.setOnClickListener {
-            model.mCurrentName.value = "changed"
-            with(it) {
-                visibility = View.GONE
-                isEnabled = false
+            if (viewModel.mCurrentName.value.equals("changed")) {
+                viewModel.mCurrentName.value = "origin"
+            } else {
+                viewModel.mCurrentName.value = "changed"
             }
         }
     }
@@ -72,6 +74,15 @@ class NameView(parent: AppCompatActivity, viewModel: NameViewModel) {
     private val nameChangeObserver = Observer<String> {
         it?.let {
             textView.text = it
+
+            with(textView) {
+                background = run {
+                    if (it.equals("origin"))
+                        Color.CYAN.toDrawable()
+                    else
+                        Color.LTGRAY.toDrawable()
+                }
+            }
         }
     }
 
