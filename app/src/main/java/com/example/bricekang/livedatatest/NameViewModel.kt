@@ -1,5 +1,6 @@
 package com.example.bricekang.livedatatest
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +12,11 @@ class NameViewModel(owner: LifecycleOwner): ViewModel() {
     val mCurrentName: MutableLiveData<String>
 
     init {
-        mCurrentName = MutableLiveData()
-        mCurrentName.value = "init"
+        mCurrentName = MutableLiveData<String>()
+
+        mCurrentName.value = "initialized"
+
+        Log.d("feed", "NameViewModel constructor")
     }
 
     override fun onCleared() {
