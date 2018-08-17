@@ -45,4 +45,17 @@ class CustomPersonLiveData: LiveData<List<PersonModel>>() {
                     Log.e("firebase", "Error adding document ${it} ")
                 }
     }
+
+    fun delteData() {
+        FirebaseFirestore.getInstance()
+                .collection("test_1")
+                .get().addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        it.result.forEach {
+                            it.reference.delete()
+                        }
+                        getData()
+                    }
+                }
+    }
 }

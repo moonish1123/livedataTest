@@ -30,6 +30,10 @@ class CustomViewModelActivity : TestAppCompatActivity() {
             index++
         }
 
+        delete.setOnClickListener {
+            viewModel.getNameProfileModel().delteData()
+        }
+
         //init
         viewModel.getNameProfileModel().getData()
     }

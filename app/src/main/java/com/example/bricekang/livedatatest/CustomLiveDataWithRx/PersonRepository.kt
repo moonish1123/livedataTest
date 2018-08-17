@@ -35,16 +35,25 @@ class PersonRepository() {
     fun putData(model: PersonModel) : Single<Boolean> {
         return Single.just(model).map {
             FirebaseFirestore.getInstance().collection("test_1").add(model).isSuccessful
+        }.doAfterSuccess {
+            getData().subscribe()
         }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
     fun deleteData() : Single<Boolean> {
-        return Single.create { emitter ->
-            FirebaseFirestore.getInstance().collection("test_1").document().delete().addOnCompleteListener {
-                getData().subscribe()
-                emitter.onSuccess(true)
-            }
-        }
+        return Single.create<Boolean> { emitter ->
+            FirebaseFirestore.getInstance()
+                    .collection("test_1")
+                    .get().addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            it.result.forEach {
+                                it.reference.delete()
+                            }
+                        }
+                    }
+        }.doAfterSuccess {
+            getData().subscribe()
+        }.observeOn(AndroidSchedulers.mainThread())
     }
 }
 

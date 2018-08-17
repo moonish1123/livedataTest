@@ -37,9 +37,9 @@ class CustomViewModelActivityWithRx : TestAppCompatActivity() {
 
         delete.setOnClickListener {
             viewModel.getNameProfileModel().deleteData().subscribe({
-
+                Toast.makeText(this,"delete start", Toast.LENGTH_SHORT).show()
             }, {
-
+                Toast.makeText(this,"delete end", Toast.LENGTH_SHORT).show()
             })
         }
 
