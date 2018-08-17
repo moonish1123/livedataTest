@@ -9,7 +9,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.bricekang.livedatatest.CustomLiveData.CustomLiveViewModel
 import com.example.bricekang.livedatatest.FeedModel.viewmodel.BabyActionViewModel
 
 open class TestAppCompatActivity: AppCompatActivity() {
@@ -18,7 +17,8 @@ open class TestAppCompatActivity: AppCompatActivity() {
             return when {
                 modelClass.isAssignableFrom(NameViewModel::class.java) -> NameViewModel(this@TestAppCompatActivity) as T
                 modelClass.isAssignableFrom(BabyActionViewModel::class.java) -> BabyActionViewModel(this@TestAppCompatActivity) as T
-                modelClass.isAssignableFrom(CustomLiveViewModel::class.java) -> CustomLiveViewModel(this@TestAppCompatActivity) as T
+                modelClass.isAssignableFrom(com.example.bricekang.livedatatest.CustomLiveDataWithRx.CustomLiveViewModel::class.java) -> com.example.bricekang.livedatatest.CustomLiveDataWithRx.CustomLiveViewModel(this@TestAppCompatActivity) as T
+                modelClass.isAssignableFrom(com.example.bricekang.livedatatest.CustomLiveData.CustomLiveViewModel::class.java) -> com.example.bricekang.livedatatest.CustomLiveData.CustomLiveViewModel(this@TestAppCompatActivity) as T
                 else -> modelClass.getConstructor(Application::class.java).newInstance(this@TestAppCompatActivity)
             }
         }

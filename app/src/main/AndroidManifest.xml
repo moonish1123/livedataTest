@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".FeedModel.SimpleViewModelActivity"/>
         <activity android:name=".CustomLiveData.CustomViewModelActivity"/>
+        <activity android:name=".CustomLiveDataWithRx.CustomViewModelActivityWithRx"/>
+
     </application>
 
 </manifest>
