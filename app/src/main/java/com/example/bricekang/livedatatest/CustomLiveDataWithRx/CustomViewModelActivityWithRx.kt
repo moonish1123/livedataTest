@@ -35,6 +35,14 @@ class CustomViewModelActivityWithRx : TestAppCompatActivity() {
             index++
         }
 
+        delete.setOnClickListener {
+            viewModel.getNameProfileModel().deleteData().subscribe({
+
+            }, {
+
+            })
+        }
+
         //init
         viewModel.getNameProfileModel().getData().doOnSuccess {
             Toast.makeText(this,"loading start", Toast.LENGTH_SHORT).show()

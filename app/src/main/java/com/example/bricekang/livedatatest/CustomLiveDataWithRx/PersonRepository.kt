@@ -37,5 +37,14 @@ class PersonRepository() {
             FirebaseFirestore.getInstance().collection("test_1").add(model).isSuccessful
         }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
+
+    fun deleteData() : Single<Boolean> {
+        return Single.create { emitter ->
+            FirebaseFirestore.getInstance().collection("test_1").document().delete().addOnCompleteListener {
+                getData().subscribe()
+                emitter.onSuccess(true)
+            }
+        }
+    }
 }
 
