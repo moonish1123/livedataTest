@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bricekang.livedatatest.CustomLiveData.CustomViewModelActivity
 import com.example.bricekang.livedatatest.CustomLiveDataWithRx.CustomViewModelActivityWithRx
 import com.example.bricekang.livedatatest.FeedModel.SimpleViewModelActivity
+import com.example.bricekang.livedatatest.RxTest.RxTestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         customLiveDataViewModelWithRx.setOnClickListener {
             launchActivity<CustomViewModelActivityWithRx>()
+        }
+
+        rxTest.setOnClickListener {
+            launchActivity<RxTestActivity>()
         }
     }
 }

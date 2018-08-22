@@ -17,7 +17,7 @@
         android:layout_marginRight="8dp"
         android:text="simple livedata viewmodel"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/customLiveDataViewModel"
+        app:layout_constraintBottom_toTopOf="@id/customLiveDataViewModel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,10 +33,10 @@
         android:layout_marginRight="8dp"
         android:text="custom livedata viewmodel"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/customLiveDataViewModelWithRx"
+        app:layout_constraintBottom_toTopOf="@id/customLiveDataViewModelWithRx"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleLiveDataViewModel" />
+        app:layout_constraintTop_toBottomOf="@id/simpleLiveDataViewModel" />
 
     <Button
         android:id="@+id/customLiveDataViewModelWithRx"
@@ -50,9 +50,43 @@
         android:layout_marginBottom="8dp"
         android:text="custom viewModel with Rx"
         android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/rxTest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customLiveDataViewModel" />
+
+    <Button
+        android:id="@+id/rxTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="RxTest"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customLiveDataViewModelWithRx" />
+
+    <Button
+        android:id="@+id/bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Bottom"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customLiveDataViewModel" />
+        app:layout_constraintTop_toBottomOf="@id/rxTest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

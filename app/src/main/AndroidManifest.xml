@@ -21,6 +21,7 @@
         <activity android:name=".FeedModel.SimpleViewModelActivity"/>
         <activity android:name=".CustomLiveData.CustomViewModelActivity"/>
         <activity android:name=".CustomLiveDataWithRx.CustomViewModelActivityWithRx"/>
+        <activity android:name=".RxTest.RxTestActivity"/>
 
     </application>
 
